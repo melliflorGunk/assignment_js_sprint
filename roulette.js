@@ -1,4 +1,4 @@
-// Basic Function that can take one particular guess
+// Basic Console-based Roulette game that creates new games via constructor function calling
 function Roulette(num){
 	this.earnings = num;
 	this.guess;
@@ -24,26 +24,26 @@ function Roulette(num){
 		var winLoseMessage = result + ".\n Your bankroll is now $";
 		//begin spin
 		this.earnings -= bet;
-		if (isNaN(guess)) {
-			var stdGuess = guess.toUpperCase().replace(/\s/g, "");
+		if (isNaN(guess)) { //if input is a string value run following
+			var stdGuess = guess.toUpperCase().replace(/\s/g, ""); //standardise guess by capitalising and removing whitespace
 			switch (true) {
-			case (stdGuess == result):
-				return "You won! The spin was " + winLoseMessage + (this.earnings += bet * 35);
-			case ((stdGuess == "00") && (result == 37)):
-				return "You won! The spin was 0" + winLoseMessage + (this.earnings += bet * 35);
-			case ((stdGuess == "EVEN") && (result % 2 == 0) && (result != 0)):
-			case ((stdGuess == "ODD") && (result % 2 != 0)):
-			case ((stdGuess == "1TO18") && (result <= 18)):
-			case ((stdGuess == "19TO36") && (result >= 19)):
-				return "You won! The spin was " + winLoseMessage + (this.earnings += bet * 2);
-			case ((stdGuess == "1ST12") && (result <= 12 && result > 0)):
-			case ((stdGuess == "2ND12") && (result <= 24 && result > 12)):
-			case ((stdGuess == "3RD12") && (result <= 36 && result > 24)):
-				return "You won! The spin was " + winLoseMessage + (this.earnings += bet * 3);
-			default:
-				return "I'm sorry, you didn't win. The spin was " + winLoseMessage + this.earnings;
+				case (stdGuess == result):
+					return "You won! The spin was " + winLoseMessage + (this.earnings += bet * 35);
+				case ((stdGuess == "00") && (result == 37)):
+					return "You won! The spin was 0" + winLoseMessage + (this.earnings += bet * 35);
+				case ((stdGuess == "EVEN") && (result % 2 == 0) && (result != 0)):
+				case ((stdGuess == "ODD") && (result % 2 != 0)):
+				case ((stdGuess == "1TO18") && (result <= 18)):
+				case ((stdGuess == "19TO36") && (result >= 19)):
+					return "You won! The spin was " + winLoseMessage + (this.earnings += bet * 2);
+				case ((stdGuess == "1ST12") && (result <= 12 && result > 0)):
+				case ((stdGuess == "2ND12") && (result <= 24 && result > 12)):
+				case ((stdGuess == "3RD12") && (result <= 36 && result > 24)):
+					return "You won! The spin was " + winLoseMessage + (this.earnings += bet * 3);
+				default:
+					return "I'm sorry, you didn't win. The spin was " + winLoseMessage + this.earnings;
 			}
-		} else {
+		} else { //if input is an integer
 			if (guess == result) {
 				return "You won! The spin was " + winLoseMessage + (this.earnings += bet * 35);
 			} else {
